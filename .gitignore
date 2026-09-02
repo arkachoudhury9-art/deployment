@@ -150,6 +150,10 @@ activemq-data/
 # Environments
 .env
 .envrc
+
+# Backend local files
+backend/.env
+backend/*.db
 .venv
 env/
 venv/
