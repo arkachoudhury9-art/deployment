@@ -3,12 +3,13 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-BACKEND_DIR = Path(__file__).resolve().parent
-load_dotenv(BACKEND_DIR / ".env")
+load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 
-if SQLALCHEMY_DATABASE_URL and SQLALCHEMY_DATABASE_URL.startswith("sqlite:///"):
-    db_path = Path(SQLALCHEMY_DATABASE_URL.removeprefix("sqlite:///"))
-    if not db_path.is_absolute():
-        SQLALCHEMY_DATABASE_URL = f"sqlite:///{(BACKEND_DIR / db_path.name).resolve()}"
+def get_database_url() -> str | None:
+    url = os.getenv("SQLALCHEMY_DATABASE_URL")
+    if url and url.startswith("sqlite:///"):
+        db_path = Path(url.removeprefix("sqlite:///"))
+        if not db_path.is_absolute():
+            url = f"sqlite:///{(Path(__file__).resolve().parent / db_path.name).resolve()}"
+    return url

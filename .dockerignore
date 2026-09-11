@@ -3,6 +3,6 @@
 .vscode
 __pycache__
 *.py[cod]
-backend/.env
+.env
 backend/*.db
 *.db

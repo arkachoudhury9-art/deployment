@@ -152,7 +152,6 @@ activemq-data/
 .envrc
 
 # Backend local files
-backend/.env
 backend/*.db
 .venv
 env/
@@ -231,3 +230,4 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+*.tfvars

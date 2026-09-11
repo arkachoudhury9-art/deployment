@@ -8,6 +8,8 @@ services:
         condition: service_healthy
     env_file:
       - .env
+    environment:
+      SQLALCHEMY_DATABASE_URL: postgresql://${POSTGRES_USER}:Test123%23@db:5432/${POSTGRES_DB}
   db:
     image: postgres:18
     environment:
